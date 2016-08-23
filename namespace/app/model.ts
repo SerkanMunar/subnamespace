@@ -1,22 +1,17 @@
 ﻿module namespace.sub {
-    export interface IData {
-        id: string;
-        type: DataType;
-    }
-
     export enum DataType {
         TypeA,
         TypeB,
-        //namespace.models.DataType != namespace.DataType, TypeC is missing in namespace.DataType
+        //namespace.sub.DataType != namespace.DataType, TypeC is missing in namespace.DataType
         TypeC
     }
 
     export class Model {
-        data: IData;
+        dataType: DataType;
 
         constructor() {
-            Client.getData((data: IData) => {
-                this.data = data;
+            Client.getDataType((dataType: DataType) => {
+                this.dataType = dataType;
             });
         }
     }
